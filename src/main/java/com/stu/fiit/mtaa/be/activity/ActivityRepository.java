@@ -1,4 +1,4 @@
-package com.example.mta_be.activity;
+package com.stu.fiit.mtaa.be.activity;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;

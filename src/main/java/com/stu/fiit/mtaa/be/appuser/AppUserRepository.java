@@ -1,4 +1,4 @@
-package com.example.mta_be.app_user;
+package com.stu.fiit.mtaa.be.appuser;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,10 +10,11 @@ import java.util.Optional;
 
 @Repository
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
-    @Query("SELECT user FROM AppUser user WHERE user.username = ?1")
-    Optional<AppUser> findAppUserByName(String username);
+
+    Optional<AppUser> findByUsername(String username);
     @Transactional
     @Modifying
     @Query("DELETE FROM AppUser user WHERE user.username = ?1")
     void deleteAppUserByName(String username);
 }
+

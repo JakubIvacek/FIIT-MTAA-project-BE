@@ -1,26 +1,26 @@
-package com.example.mta_be.activity;
+package com.stu.fiit.mtaa.be.activity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-
 
 @Service
 public class ActivityService {
-    private ActivityRepository activityRepository;
+    private final ActivityRepository activityRepository;
 
     @Autowired
     public ActivityService(ActivityRepository activityRepository){
         this.activityRepository = activityRepository;
     }
+
     //Get User-id activities
     public List<Activity> getUserActivities(Long userId) {
         List<Activity> userActivities = activityRepository.findUserActivites(userId)
                 .orElseThrow(() -> new IllegalStateException( "Activites for this id not found user_id : " + userId));
         return userActivities;
     }
+
     // Delete User activity
     public void deleteActivity(Long activityId) {
         //Check if present
@@ -33,6 +33,7 @@ public class ActivityService {
     public void addNewActivity(Activity activity) {
         activityRepository.save(activity);
     }
+
     //Search and get specific activity
     public Activity findActivityById(Long activityId) {
         return activityRepository.getReferenceById(activityId);
